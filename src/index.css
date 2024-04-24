@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 40px;
+}
+body {
+  position: relative;
+  overflow-x: hidden;
+  color: #011f45;
+  font-family: "Inter", sans-serif;
+}
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.font-syne {
+  font-family: "Syne", sans-serif;
+}
+
+.btn-blue {
+  @apply px-5 bg-azure text-sm sm:text-base text-white font-semibold rounded-md;
+}
