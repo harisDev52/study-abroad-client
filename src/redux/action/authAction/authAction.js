@@ -1,36 +1,37 @@
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { API_ENDPOINT } from '../../../constants'
 
-const API_ENDPOINT = 'http://127.0.0.1:5000/';
+
 
 export const login = (email, password, onSuccess) => async (dispatch) => {
   try {
     if (!password) {
-      throw new Error("Please enter your password");
+      throw new Error("Please enter your password")
     }
 
     const loginResponse = await axios.post(
       `${API_ENDPOINT}login`,
       { email, password }
-    );
+    )
 
     if (loginResponse.data) {
 
-        console.log(loginResponse.data.token);
+        console.log(loginResponse.data.token)
 
-      localStorage.setItem('token', JSON.stringify(loginResponse.data.access_token));
-      dispatch({ type: "LOGIN_SUCCESS", payload: loginResponse.data });
-      onSuccess(); // Invoke the onSuccess callback to trigger redirection
-      toast.success("Login successful!");
+      localStorage.setItem('token',loginResponse.data.access_token)
+      dispatch({ type: "LOGIN_SUCCESS", payload: loginResponse.data })
+      onSuccess() // Invoke the onSuccess callback to trigger redirection
+      toast.success("Login successful!")
 
-      return true;
+      return true
     } else {
-      throw new Error("Login failed");
+      throw new Error("Login failed")
     }
   } catch (error) {
-    const errorMessage = error.response ? error.response.data.message : 'Login Failed';
-    dispatch({ type: "LOGIN_FAILURE", payload: errorMessage });
-    toast.error(errorMessage);
-    return false;
+    const errorMessage = error.response ? error.response.data.message : 'Login Failed'
+    dispatch({ type: "LOGIN_FAILURE", payload: errorMessage })
+    toast.error(errorMessage)
+    return false
   }
-};
+}

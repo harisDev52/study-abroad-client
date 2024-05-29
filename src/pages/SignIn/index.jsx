@@ -1,42 +1,47 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import LoadingSpinner from "../../components/LoadingSpinner";
-import { login } from "../../redux/action/authAction/authAction";
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import LoadingSpinner from "../../components/LoadingSpinner"
+import { login } from "../../redux/action/authAction/authAction"
+import Navbar from "../../components/Navbar"
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const success = await dispatch(login(email, password, redirectToHome)); // Pass selectedBusinessUnit to login function
+      const success = await dispatch(login(email, password, redirectToHome)) // Pass selectedBusinessUnit to login function
       if (success) {
-        setEmail("");
-        setPassword("");
+        setEmail("")
+        setPassword("")
       }
     } catch (error) {
-      toast.error(error.message || "Login Failed !");
+      toast.error(error.message || "Login Failed !")
     }
-  };
+  }
 
   const redirectToHome = () => {
-    window.location.href = '/home';
+    window.location.href = '/home'
   }
 
   return (
-    <div className="flex min-h-screen justify-center">
-      <div className="flex justify-center pt-16 md:pt-20 pb-10 lg:flex-none">
-        <div className="mx-auto w-full sm:max-w-sm lg:w-96">
+    <div
+      className="flex min-h-screen justify-center bg-cover bg-center"
+      style={{ backgroundImage: `url('/widener.jpg')` }}
+    >
+      <Navbar />
+      <div className=" justify-center pt-16 mt-20">
+        <div className="mx-auto w-full sm:max-w-sm lg:w-96 bg-white bg-opacity-80 p-8 rounded-lg shadow-lg">
           <div>
             <h2 className="mt-6 text-xl sm:text-3xl font-bold leading-9 tracking-tight text-blackLight">
               Sign in to your account
             </h2>
             <p className="mt-2 text-sm leading-6 text-gray-500">
-              Dont have an account?{" "}
+              Don't have an account?{" "}
               <Link
                 to="/sign-up"
                 className="font-semibold text-indigo-600 hover:text-indigo-500 !underline"
@@ -46,7 +51,7 @@ const SignIn = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className={`space-y-6  mt-8`}>
+          <form onSubmit={handleSubmit} className={`space-y-6 mt-8`}>
             <div>
               <label
                 htmlFor="email"
@@ -99,7 +104,7 @@ const SignIn = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignIn;
+export default SignIn

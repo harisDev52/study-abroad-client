@@ -1,9 +1,9 @@
 
 // third-party
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit'
 
 // project import
-import rootReducer from './reducer/authReducer/authReducer';
+import rootReducer from './reducer/authReducer/authReducer'
 
 
 
@@ -11,10 +11,10 @@ import rootReducer from './reducer/authReducer/authReducer';
 
 const store = configureStore({
   reducer: rootReducer
-});
+})
 
 // Extracting dispatch function from the store
-const { dispatch } = store;
+const { dispatch } = store
 
 // Exporting the store and dispatch function
-export { store, dispatch };
+export { store, dispatch }
