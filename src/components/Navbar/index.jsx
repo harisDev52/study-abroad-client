@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { CgProfile } from "react-icons/cg"
+import { API_ENDPOINT } from "../../constants"
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       // Hit the logout endpoint
-      const response = await fetch('http://127.0.0.1:5000/logout', {
+      const response = await fetch(`${API_ENDPOINT}/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

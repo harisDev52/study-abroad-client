@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { GoArrowRight } from "react-icons/go"
 import Navbar from "../../components/Navbar"
+import { API_ENDPOINT } from "../../constants"
 
 const Home = () => {
   const navigate = useNavigate()
@@ -17,7 +18,7 @@ const Home = () => {
       setLoading(true)
       setError(null)
       try {
-        const response = await fetch("http://127.0.0.1:5000/get_suggestions")
+        const response = await fetch(`${API_ENDPOINT}/get_suggestions`)
         const data = await response.json()
         setSuggestions(data)
       } catch (err) {

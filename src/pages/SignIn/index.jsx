@@ -9,10 +9,12 @@ const SignIn = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    // console.log(email, password, "working")
     try {
       const success = await dispatch(login(email, password, redirectToHome)) // Pass selectedBusinessUnit to login function
       if (success) {
@@ -20,12 +22,14 @@ const SignIn = () => {
         setPassword("")
       }
     } catch (error) {
+      console.log(error, "error")
       toast.error(error.message || "Login Failed !")
     }
   }
 
   const redirectToHome = () => {
     window.location.href = '/home'
+    // navigate('/home')
   }
 
   return (

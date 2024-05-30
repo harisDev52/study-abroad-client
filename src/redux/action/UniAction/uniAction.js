@@ -5,7 +5,7 @@ import { API_ENDPOINT } from '../../../constants'
 
   export const fetchUniversityById = (domain) => async dispatch => {
     try {
-      const UniResponse = await axios.post(`${API_ENDPOINT}universities/${domain}`)
+      const UniResponse = await axios.post(`${API_ENDPOINT}/universities/${domain}`)
       dispatch({ type: 'GET_UNIVERSITY_SUCCESS', payload: UniResponse.data.universities })
     } catch (error) {
       const errorMessage = error.response ? error.response.data.message : 'Failed to fetch Universities'
