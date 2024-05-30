@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/register"
+  to = "http://170.64.228.126:5000/register"
+  status = 200
